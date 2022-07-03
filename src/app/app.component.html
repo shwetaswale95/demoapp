@@ -1,0 +1,11 @@
+<p *ngIf="showHeader">
+  <mat-toolbar class="justify-content-between">
+    <span>DashBoard</span>
+    <button mat-raised-button (click)="logout()">
+      Logout
+    </button>
+  </mat-toolbar>
+</p>
+<div class="container h-100">
+  <router-outlet></router-outlet>
+</div>

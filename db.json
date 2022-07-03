@@ -1,0 +1,43 @@
+{
+  "employeeList": [
+    {
+      "firstname": "shweta",
+      "lastname": "Aswale",
+      "email": "sh.aswale95@gmail.com",
+      "telephone": "1234567890",
+      "address": "address",
+      "id": 1
+    },
+    {
+      "firstname": "shuas",
+      "lastname": "chavan",
+      "email": "sc@gmail.com",
+      "telephone": "8765433343",
+      "address": "shivaji peth",
+      "id": 2
+    }
+  ],
+  "signupUsers": [
+    {
+      "first_name": "shweta",
+      "last_name": "aswale",
+      "email": "sh.aswale95@gmail.com",
+      "password": "4veOiX5NnfFUjU+9N/1lWA==",
+      "address": "chatrapati shivaji peth",
+      "dob": "01/01/1995",
+      "id": 1
+    },
+    {
+      "first_name": "shubham",
+      "last_name": "chavan",
+      "email": "shubham@gmail.com",
+      "password": "8Rk8jEGbl4AMBGbMmG/SNA==",
+      "address": "mangadskjd",
+      "dob": "08/13/1995",
+      "id": 2
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}

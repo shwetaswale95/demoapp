@@ -1,0 +1,67 @@
+<form [formGroup]="signUpForm">
+  <h1 class="text-center"><b>Sign Up</b></h1>
+  <div class="pb-2">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>First Name</mat-label>
+      <input matInput formControlName="first_name">
+      <mat-error *ngIf="getFC('first_name').touched && getFC('first_name').invalid">
+        This Field is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="pb-2">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Last Name</mat-label>
+      <input matInput formControlName="last_name">
+      <mat-error *ngIf="getFC('last_name').touched && getFC('last_name').invalid">
+        This Field is required</mat-error>
+    </mat-form-field>
+  </div>
+  <div class="pb-2">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email">
+      <mat-error *ngIf="getFC('email').touched && getFC('email').invalid">
+        This Field is required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Password</mat-label>
+    <input matInput type="password" formControlName="password" #passwordField>
+    <button  mat-icon-button type="button" (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
+    matSuffix>
+    <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'text'">visibility</mat-icon>
+      <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'password'">visibility_off</mat-icon>
+    </button>
+    <mat-error *ngIf="getFC('password').touched && getFC('password').invalid">
+      This Field is required</mat-error>
+  </mat-form-field>
+  
+ <div class="pb-2">
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Address</mat-label>
+    <textarea matInput formControlName="address"></textarea>
+    <mat-error *ngIf="getFC('address').touched && getFC('address').invalid">
+      This Field is required</mat-error>
+  </mat-form-field>
+ </div>
+
+ <div class="pb-2">
+  <mat-form-field appearance="outline" class="w-100">
+    <mat-label>Birthdate</mat-label>
+    <input matInput [matDatepicker]="picker" formControlName="dob">
+    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+    <mat-error *ngIf="getFC('dob').touched && getFC('dob').invalid">
+      Please enter valid date(age shouln't be less than 15)</mat-error>
+  </mat-form-field>
+ </div>
+ <button mat-raised-button color="primary" class="w-100 p-2" (click)="signUp()" [disabled]="!signUpForm.valid">
+  Sign Up
+</button>
+
+  <div class="mt-4 d-flex align-items-center justify-content-center">
+    <p class="mb-0">Already have an account?</p>
+    <a mat-button routerLink="/auth/login" color="primary">Login</a>
+  </div>
+</form>

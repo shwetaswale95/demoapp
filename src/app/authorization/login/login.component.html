@@ -1,0 +1,33 @@
+<form [formGroup]="loginForm">
+  <h1 class="text-center"><b>Login</b></h1>
+  <div class="pb-2">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email">
+      <mat-error *ngIf="getFC('email').touched && getFC('email').invalid">
+        This Field is required</mat-error>
+    </mat-form-field>
+  </div>
+
+  <div class="pb-2">
+    <mat-form-field appearance="outline" class="w-100">
+      <mat-label>Password</mat-label>
+      <input matInput type="password" formControlName="password" #passwordField>
+      <button  mat-icon-button type="button" (click)="passwordField.type === 'password' ? passwordField.type = 'text' : passwordField.type = 'password'"
+      matSuffix>
+      <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'text'">visibility</mat-icon>
+        <mat-icon class="icon-size-5" *ngIf="passwordField.type === 'password'">visibility_off</mat-icon>
+      </button>
+      <mat-error *ngIf="getFC('password').touched && getFC('password').invalid">
+        This Field is required</mat-error>
+    </mat-form-field>
+  </div>
+  <button mat-raised-button color="primary" class="w-100 p-2" (click)="login()" [disabled]="!loginForm.valid">
+    LogIn
+  </button>
+
+  <div class="mt-4 d-flex align-items-center justify-content-center">
+    <p class="mb-0">New User</p>
+    <a mat-button routerLink="/auth/signup" color="primary">Signup</a>
+  </div>
+</form>

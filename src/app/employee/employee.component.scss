@@ -1,0 +1,32 @@
+.mat-table {
+    overflow: auto;
+    max-height: 500px;
+}
+
+.search {
+    position: relative;
+
+    label[for="search"] {
+      position: absolute;
+      top: 10px;
+      left: 14px;
+      font-size: 1.2em;
+    }
+
+    input[id="search"] {
+      color: gray;
+      padding: 8px 10px 8px 40px;
+      border: 1px solid gray;
+      font-size: 15px;
+      border-radius: 50px;
+      width: 380px;
+      outline: none !important;
+      background-color: transparent;
+    }
+
+    .mat-icon {
+      font-size: 1.2em;
+      color: gray;
+      cursor: pointer;
+    }
+  }

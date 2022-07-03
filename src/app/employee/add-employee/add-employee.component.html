@@ -1,0 +1,53 @@
+<div mat-dialog-title align="end" class="d-flex align-items-center justify-content-between">
+    <h3> {{typeForm === 'create'?'Add Employee':'Edit details'}}</h3>
+    <button mat-icon-button mat-dialog-close>
+      <mat-icon>close</mat-icon>
+    </button>
+</div>
+<div mat-dialog-content>
+    <form [formGroup]="addEmpForm">
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>First Name</mat-label>
+            <input matInput  formControlName="firstname">
+            <mat-error *ngIf="getFC('firstname').touched && getFC('firstname').invalid">
+              This Field is required</mat-error>
+          </mat-form-field>
+        <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Last Name</mat-label>
+            <input matInput  formControlName="lastname">
+            <mat-error *ngIf="getFC('lastname').touched && getFC('lastname').invalid">
+              This Field is required</mat-error>
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" formControlName="email">
+            <mat-error *ngIf="getFC('email').touched && getFC('email').invalid">
+              This Field is required</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Telephone</mat-label>
+            <input matInput type="tel" formControlName="telephone">
+            <mat-error *ngIf="getFC('telephone').touched && getFC('telephone').invalid">
+              This Field is required && please enter valid number</mat-error>
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="w-100">
+            <mat-label>Address</mat-label>
+            <textarea matInput formControlName="address"></textarea>
+            <mat-error *ngIf="getFC('address').touched && getFC('address').invalid">
+              This Field is required</mat-error>
+          </mat-form-field>
+
+    </form>
+</div>
+<mat-dialog-actions align="end">
+    <button mat-raised-button mat-dialog-close color="warn">
+        Cancel
+    </button>
+    <button mat-raised-button color="primary" [disabled]="!addEmpForm.valid"
+    (click)="saveEmployee()">
+        {{typeForm === 'create'?'Save':'Update'}}
+    </button>
+</mat-dialog-actions>
