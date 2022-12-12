@@ -15,6 +15,30 @@
       "telephone": "8765433343",
       "address": "shivaji peth",
       "id": 2
+    },
+    {
+      "firstname": "testing ",
+      "lastname": "ngrx",
+      "email": "ngrx@gmail.com",
+      "telephone": "1234567890",
+      "address": "sadaskdjas",
+      "id": 3
+    },
+    {
+      "firstname": "test new",
+      "lastname": "last name",
+      "email": "shwetagmail.com",
+      "telephone": "1234567890",
+      "address": "hsaghd",
+      "id": 4
+    },
+    {
+      "firstname": "shweta",
+      "lastname": "aswale2",
+      "email": "shweta.aswale@mindbowser.com",
+      "telephone": "1234567890",
+      "address": "sjdd",
+      "id": 5
     }
   ],
   "signupUsers": [
@@ -35,6 +59,15 @@
       "address": "mangadskjd",
       "dob": "08/13/1995",
       "id": 2
+    },
+    {
+      "first_name": "shweta",
+      "last_name": "aswale",
+      "email": "shweta.aswale@mindbowser.com",
+      "password": "asr7Vx2Oz4Pz3Gxurm3AZw==",
+      "address": "shivaji peth",
+      "dob": "01/01/1995",
+      "id": 3
     }
   ],
   "profile": {

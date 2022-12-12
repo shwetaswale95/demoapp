@@ -1,3 +1,4 @@
+import { select, Store } from '@ngrx/store';
 import { Component, Inject, OnDestroy, OnInit } from '@angular/core';
 import { AbstractControl, FormControl, FormGroup, Validators } from '@angular/forms';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
@@ -5,6 +6,7 @@ import { Subject } from 'rxjs';
 import { takeUntil } from 'rxjs/operators';
 import { EmployeeService } from 'src/app/services/user/employee.service';
 import { MODAL_TYPE } from 'src/app/shared/models/task.model';
+import { invokeSaveNewEmployeeAPI } from '../+store/employee.actions';
 
 @Component({
   selector: 'app-add-employee',
@@ -19,7 +21,7 @@ export class AddEmployeeComponent implements OnInit, OnDestroy {
 
   constructor(@Inject(MAT_DIALOG_DATA) public popupConfig: any,
   public dialogRef: MatDialogRef<AddEmployeeComponent>,
-  private employeeData:EmployeeService) { }
+  private employeeData:EmployeeService, private store: Store) { }
 
   ngOnInit(): void {
     this.getPopupParams();
@@ -40,7 +42,7 @@ export class AddEmployeeComponent implements OnInit, OnDestroy {
     this.addEmpForm = new FormGroup({
       firstname: new FormControl('', Validators.required),
       lastname: new FormControl('', Validators.required),
-      email: new FormControl('', Validators.required),
+      email: new FormControl('', [Validators.required, Validators.email]),
       telephone: new FormControl('', [Validators.required, Validators.pattern('^[0-9]{10}$')]),
       address: new FormControl('', Validators.required),
     });
@@ -65,15 +67,18 @@ export class AddEmployeeComponent implements OnInit, OnDestroy {
   }
 
   private addEmployee(): void {
-    this.employeeData.addEmployee(this.addEmpForm.value).pipe(takeUntil(this.destroyer$))
-    .subscribe({
-      next:() =>{
-        this.addEmpForm.reset();
-        this.dialogRef.close('add');
-      }, error:(error) =>{
-        alert(error);
-      }
-    });
+    this.store.dispatch(invokeSaveNewEmployeeAPI({ newEmployee: this.addEmpForm.value }));
+    this.addEmpForm.reset();
+    this.dialogRef.close('add');
+    // this.employeeData.addEmployee(this.addEmpForm.value).pipe(takeUntil(this.destroyer$))
+    // .subscribe({
+    //   next:() =>{
+    //     this.addEmpForm.reset();
+    //     this.dialogRef.close('add');
+    //   }, error:(error) =>{
+    //     alert(error);
+    //   }
+    // });
   }
 
   private editEmployee() : void {
